@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+:root {
+  /* Light mode colors - Facebook inspired */
+  --background: #ffffff;
+  --foreground: #1c1e21;
+  --card: #ffffff;
+  --card-foreground: #1c1e21;
+  --primary: #1877f2;
+  --primary-foreground: #ffffff;
+  --secondary: #f0f2f5;
+  --secondary-foreground: #65676b;
+  --muted: #f0f2f5;
+  --muted-foreground: #65676b;
+  --accent: #e4e6ea;
+  --accent-foreground: #1c1e21;
+  --border: #dadde1;
+  --input: #f0f2f5;
+  --ring: #1877f2;
+  --hover: #f7f8fa;
+  --success: #42b883;
+  --warning: #e3a857;
+  --error: #e74c3c;
+  --destructive: #e74c3c;
+  --destructive-foreground: #ffffff;
+  --popover: #ffffff;
+  --popover-foreground: #1c1e21;
+  --radius: 0.75rem;
+}
+
+[data-theme="dark"] {
+  /* Dark mode colors - Facebook/Instagram dark inspired */
+  --background: #18191a;
+  --foreground: #e4e6ea;
+  --card: #242526;
+  --card-foreground: #e4e6ea;
+  --primary: #4599ff;
+  --primary-foreground: #ffffff;
+  --secondary: #3a3b3c;
+  --secondary-foreground: #b0b3b8;
+  --muted: #3a3b3c;
+  --muted-foreground: #b0b3b8;
+  --accent: #3a3b3c;
+  --accent-foreground: #e4e6ea;
+  --border: #3e4042;
+  --input: #3a3b3c;
+  --ring: #4599ff;
+  --hover: #303031;
+  --success: #42b883;
+  --warning: #e3a857;
+  --error: #e74c3c;
+  --destructive: #e74c3c;
+  --destructive-foreground: #ffffff;
+  --popover: #242526;
+  --popover-foreground: #e4e6ea;
+}
+
+.dark {
+  --background: #18191a;
+  --foreground: #e4e6ea;
+  --card: #242526;
+  --card-foreground: #e4e6ea;
+  --primary: #4599ff;
+  --primary-foreground: #ffffff;
+  --secondary: #3a3b3c;
+  --secondary-foreground: #b0b3b8;
+  --muted: #3a3b3c;
+  --muted-foreground: #b0b3b8;
+  --accent: #3a3b3c;
+  --accent-foreground: #e4e6ea;
+  --border: #3e4042;
+  --input: #3a3b3c;
+  --ring: #4599ff;
+  --hover: #303031;
+  --success: #42b883;
+  --warning: #e3a857;
+  --error: #e74c3c;
+  --destructive: #e74c3c;
+  --destructive-foreground: #ffffff;
+  --popover: #242526;
+  --popover-foreground: #e4e6ea;
+}
+
+/* Bridge CSS variables to Tailwind v4 tokens so utilities like bg-card, border-border work */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-hover: var(--hover);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--muted);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--muted-foreground);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Smooth animations */
+* {
+  transition: box-shadow 0.2s ease, border-color 0.2s ease,
+    background-color 0.2s ease;
+}
+
+/* Focus styles */
+.focus-ring {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+/* Hover effects */
+.hover-lift:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] .hover-lift:hover,
+.dark .hover-lift:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
